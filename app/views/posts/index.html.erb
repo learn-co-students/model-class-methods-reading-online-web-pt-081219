@@ -1,4 +1,26 @@
 <h1>Believe It Or Not I'm Blogging On Air</h1>
+
+<div>
+  <h3>Filter posts:</h3>
+  <%= form_tag("/posts", method: "get") do %>
+    <%= select_tag "author", options_from_collection_for_select(@authors, "id", "name"), include_blank: true %>
+    <%= submit_tag "Filter" %>
+    <%= select_tag "date", options_for_select(["Today", "Old News"]), include_blank: true %>
+  <%= submit_tag "Filter" %>
+  <% end %>
+</div>
+<%# ^^RAILS >>HTML>> %>
+
+<%# <form action="/posts" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
+    <select name="author" id="author"><option value="" label=" "></option><option value="13">Stephen King</option>
+<option value="14">Ariana Huffington</option>
+<option value="15">Horse Ebooks</option></select>
+    <input type="submit" name="commit" value="Filter" data-disable-with="Filter">
+</form> %>
+
+
+
+
 <% @posts.each do |post| %>
   <div>
     <h2><%= post.title %></h2>
@@ -6,3 +28,5 @@
     <p><%= post.description %></p>
   </div>
 <% end %>
+
+
